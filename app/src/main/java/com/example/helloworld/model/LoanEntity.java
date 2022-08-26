@@ -1,25 +1,28 @@
 package com.example.helloworld.model;
 
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class LoanEntity {
+public class LoanEntity implements Serializable {
 
-
+    @SerializedName("id")
     private Long id;
-
+    @SerializedName("borrowerId")
     private Long borrowerId;
-
+    @SerializedName("lenderId")
     private Long lenderId;
-
+    @SerializedName("state")
     private Integer state;
-
+    @SerializedName("money")
     private BigDecimal money;
-
+    @SerializedName("creationTime")
     private Long creationTime;
-
+    @SerializedName("lendingTime")
     private Long lendingTime;
-
+    @SerializedName("refundingTime")
     private Long refundingTime;
 
     public LoanEntity(Long id, Long borrowerId, Long lenderId, Integer state,
@@ -37,7 +40,7 @@ public class LoanEntity {
 
     public LoanEntity() {}
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -45,7 +48,7 @@ public class LoanEntity {
         this.id = id;
     }
 
-    public long getBorrowerId() {
+    public Long getBorrowerId() {
         return borrowerId;
     }
 

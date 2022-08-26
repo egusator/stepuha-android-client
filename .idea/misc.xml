@@ -5,6 +5,8 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1734375" />
         <entry key="app/src/main/res/layout/activity_display_message.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_loan.xml" value="0.26875" />
+        <entry key="app/src/main/res/layout/activity_loan_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
       </map>
     </option>
@@ -14,5 +16,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>
