@@ -36,7 +36,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_message);
         Intent intent = getIntent();
-        person = (PersonEntity) intent.getSerializableExtra(MainActivity.PERSON);
+        person = (PersonEntity) intent.getSerializableExtra("person");
         TextView personNameView = (TextView) findViewById(R.id.personNameView);
         TextView moneyTextView = (TextView) findViewById(R.id.moneyTextView);
         personNameView.setText(person.getFirstName());
@@ -85,6 +85,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
                     LoanAndPersonDTO loanAndPersonDTO = new Gson().fromJson(jsonString, LoanAndPersonDTO.class);
                     Intent intent = new Intent(DisplayMessageActivity.this, LoanListActivity.class);
                     intent.putExtra(LOANS, loanAndPersonDTO);
+                    intent.putExtra("person", person);
                     startActivity(intent);
                 }
             });

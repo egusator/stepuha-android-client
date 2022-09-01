@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     PersonDTO personDTO = new Gson().fromJson(jsonString, PersonDTO.class);
                     Intent intent = new Intent(MainActivity.this, DisplayMessageActivity.class);
-                    intent.putExtra(PERSON, personDTO.getPersonList().get(0));
+                    intent.putExtra("person", personDTO.getPersonList().get(0));
                     startActivity(intent);
 
                 }

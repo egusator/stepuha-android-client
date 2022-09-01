@@ -9,29 +9,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.helloworld.dto.ErrorDTO;
 import com.example.helloworld.dto.LoanAndPersonDTO;
-import com.example.helloworld.dto.LoanDTO;
-import com.example.helloworld.dto.PersonDTO;
 import com.example.helloworld.model.LoanAndPersonEntity;
-import com.example.helloworld.model.LoanEntity;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.example.helloworld.model.PersonEntity;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class LoanListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-
+    LoanAndPersonDTO loanAndPersonDTO;
+    PersonEntity person;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_list);
         Intent intent = getIntent();
-        LoanAndPersonDTO loanAndPersonDTO = (LoanAndPersonDTO) intent.getSerializableExtra(DisplayMessageActivity.LOANS);
+        person = (PersonEntity) intent.getSerializableExtra("person");
+        loanAndPersonDTO = (LoanAndPersonDTO) intent.getSerializableExtra(DisplayMessageActivity.LOANS);
 
         ListView listview = (ListView) findViewById(R.id.loanListView);
         ArrayList<String> loanListStringArray = new ArrayList<>();
@@ -50,11 +45,14 @@ public class LoanListActivity extends AppCompatActivity implements AdapterView.O
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
         Log.i("HelloListView", "You clicked Item: " + id + " at position:" + position);
         // Then you start a new Activity via Intent
-        Intent intent = new Intent();
+        Intent intent = new Intent(LoanListActivity.this, LoanActivity.class);
         intent.setClass(this, LoanActivity.class);
         intent.putExtra("position", position);
         // Or / And
         intent.putExtra("id", id);
+        intent.putExtra("person", person);
+        LoanAndPersonEntity selected = loanAndPersonDTO.getLoanAndPersonList().get((int) id);
+        intent.putExtra("selected", selected);
         startActivity(intent);
     }
 }
